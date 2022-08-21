@@ -1,0 +1,333 @@
+{
+	"position_0": {
+		"label" = "COGround",
+		"pos" = [9164, 155]
+	},
+	"position_1": {
+		"label" = "COTrans",
+		"pos" = [8830, 5758]
+	},
+	"position_2"
+		"label" = "COB1Fac1Ass",
+		"pos" = [15423, 1988]
+	},
+	"position_3"
+		"label" = "COB1Vtol1Ass",
+		"pos" = [15424, 2240]
+	},
+	"position_4"
+		"label" = "COB1Fac3Ass",
+		"pos" = [16075, 1996]
+	},
+	"position_5"
+		"label" = "COB1Vtol2Ass",
+		"pos" = [16074, 2262]
+	},
+	"position_6"
+		"label" = "COB1Fac2Ass",
+		"pos" = [15742, 1995]
+	},
+	"position_7"
+		"label" = "COO1Fac1Ass",
+		"pos" = [838, 3536]
+	},
+	"position_8"
+		"label" = "COB2Cyb1Ass",
+		"pos" = [15033, 11859]
+	},
+	"position_9"
+		"label" = "COB2Cyb2Ass",
+		"pos" = [15292, 11854]
+	},
+	"position_10"
+		"label" = "COB2Cyb3Ass",
+		"pos" = [15040, 11686]
+	},
+	"position_11"
+		"label" = "COB2Cyb4Ass",
+		"pos" = [15291, 11703]
+	},
+	"position_12"
+		"label" = "COB2Vtol1Ass",
+		"pos" = [15545, 11050]
+	},
+	"position_13"
+		"label" = "COB2Vtol2Ass",
+		"pos" = [15678, 11044]
+	},
+	"position_14"
+		"label" = "COB2Vtol3Ass",
+		"pos" = [15794, 11050]
+	},
+	"position_15"
+		"label" = "COB2Fac1Ass",
+		"pos" = [16445, 11069]
+	},
+	"position_16"
+		"label" = "COB2Fac2Ass",
+		"pos" = [16290, 11069]
+	},
+	"position_17"
+		"label" = "startingPos",
+		"pos" = [945, 11852]
+	},
+	"area_0": {
+		"label": "landingZone",
+		"pos1": [512, 11904],
+		"pos2": [896, 12288]
+	},
+	"area_1": {
+		"label": "playerArea",
+		"pos1": [256, 11136],
+		"pos2": [1664, 12544]
+	},
+	"area_2": {
+		"label": "lastScav",
+		"pos1": [384, 6784],
+		"pos2": [1280, 7808]
+	},
+	"area_3": {
+		"label": "COOutpost1",
+		"pos1": [512, 2432],
+		"pos2": [2304, 4480]
+	},
+	"area_4": {
+		"label": "COOutpost2",
+		"pos1": [7808, 1279],
+		"pos2": [11648, 7680]
+	},
+	"area_5": {
+		"label": "COBase1",
+		"pos1": [14592, 640],
+		"pos2": [17408, 2816]
+	},
+	"area_6": {
+		"label": "COBase2",
+		"pos1": [11136, 6400],
+		"pos2": [17664, 12544]
+	},
+	"area_7": {
+		"label": "Power1",
+		"pos1": [7808, 7040],
+		"pos2": [8448, 7680]
+	},
+	"area_8": {
+		"label": "Power2",
+		"pos1": [11008, 4096],
+		"pos2": [11648, 4736]
+	},
+	"area_9": {
+		"label": "Power3",
+		"pos1": [8960, 3840],
+		"pos2": [9600, 4480]
+	},
+	"area_10": {
+		"label": "Power4",
+		"pos1": [10368, 2432],
+		"pos2": [11008, 3072]
+	},
+	"area_11": {
+		"label": "Power5",
+		"pos1": [8320, 1280],
+		"pos2": [8960, 1920]
+	},
+	"object_0": {
+		"label": "COout1Factory",
+		"id": 402,
+		"player": 2,
+		"type": 1
+	},
+	"object_1": {
+		"label": "COout1Pow",
+		"id": 399,
+		"player": 2,
+		"type": 1
+	},
+	"object_2": {
+		"label": "COout1Res",
+		"id": 398,
+		"player": 2,
+		"type": 1
+	},
+	"object_3": {
+		"label": "hardSensor",
+		"id": 164,
+		"player": 2,
+		"type": 1
+	},
+	"object_4": {
+		"label": "hardCB",
+		"id": 165,
+		"player": 2,
+		"type": 1
+	},
+	"object_5": {
+		"label": "CObase1Factory1",
+		"id": 87,
+		"player": 2,
+		"type": 1
+	},
+	"object_6": {
+		"label": "CObase1Factory2",
+		"id": 89,
+		"player": 2,
+		"type": 1
+	},
+	"object_7": {
+		"label": "CObase1Factory3",
+		"id": 91,
+		"player": 2,
+		"type": 1
+	},
+	"object_8": {
+		"label": "scavFactory",
+		"id": 135,
+		"player": 7,
+		"type": 1
+	},
+	"object_9": {
+		"label": "CObase1Vtol1",
+		"id": 106,
+		"player": 2,
+		"type": 1
+	},
+	"object_10": {
+		"label": "CObase1Vtol2",
+		"id": 108,
+		"player": 2,
+		"type": 1
+	},
+	"object_11": {
+		"label": "CObase1Pow1",
+		"id": 406,
+		"player": 2,
+		"type": 1
+	},
+	"object_12": {
+		"label": "CObase1Pow2",
+		"id": 407,
+		"player": 2,
+		"type": 1
+	},
+	"object_13": {
+		"label": "CObase1Res",
+		"id": 410,
+		"player": 2,
+		"type": 1
+	},
+	"object_14": {
+		"label": "CObase1Res",
+		"id": 411,
+		"player": 2,
+		"type": 1
+	},
+	"object_15": {
+		"label": "CObase2Factory1",
+		"id": 567,
+		"player": 2,
+		"type": 1
+	},
+	"object_16": {
+		"label": "CObase2Factory2",
+		"id": 571,
+		"player": 2,
+		"type": 1
+	},
+	"object_17": {
+		"label": "CObase2Vtol1",
+		"id": 563,
+		"player": 2,
+		"type": 1
+	},
+	"object_18": {
+		"label": "CObase2Vtol2",
+		"id": 565,
+		"player": 2,
+		"type": 1
+	},
+	"object_19": {
+		"label": "CObase2Vtol3",
+		"id": 569,
+		"player": 2,
+		"type": 1
+	},
+	"object_20": {
+		"label": "CObase2Cyb1",
+		"id": 572,
+		"player": 2,
+		"type": 1
+	},
+	"object_21": {
+		"label": "CObase2Cyb2",
+		"id": 573,
+		"player": 2,
+		"type": 1
+	},
+	"object_22": {
+		"label": "CObase2Cyb3",
+		"id": 574,
+		"player": 2,
+		"type": 1
+	},
+	"object_23": {
+		"label": "CObase2Cyb4",
+		"id": 575,
+		"player": 2,
+		"type": 1
+	},
+	"radius_0": {
+		"label": "removeObjectiveBlip0",
+		"subscriber": 0,
+		"pos": [840, 7290],
+		"radius": 640
+	},
+	"radius_1": {
+		"label": "removeObjectiveBlip1",
+		"subscriber": 0,
+		"pos": [1200, 2890],
+		"radius": 640
+	},
+	"radius_2": {
+		"label": "removeObjectiveBlip2",
+		"subscriber": 0,
+		"pos": [8125, 7360],
+		"radius": 640
+	},
+	"radius_3": {
+		"label": "removeObjectiveBlip3",
+		"subscriber": 0,
+		"pos": [9280, 4150],
+		"radius": 640
+	},
+	"radius_4": {
+		"label": "removeObjectiveBlip4",
+		"subscriber": 0,
+		"pos": [8630, 1600],
+		"radius": 640
+	},
+	"radius_5": {
+		"label": "removeObjectiveBlip5",
+		"subscriber": 0,
+		"pos": [10685, 2750],
+		"radius": 640
+	},
+	"radius_6": {
+		"label": "removeObjectiveBlip6",
+		"subscriber": 0,
+		"pos": [11325, 4400],
+		"radius": 640
+	},
+	"radius_7": {
+		"label": "removeObjectiveBlip7",
+		"subscriber": 0,
+		"pos": [15685, 1600],
+		"radius": 1280
+	},
+	"radius_8": {
+		"label": "removeObjectiveBlip8",
+		"subscriber": 0,
+		"pos": [16320, 11785],
+		"radius": 1280
+	}
+
+}
