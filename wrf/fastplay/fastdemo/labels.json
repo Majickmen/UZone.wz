@@ -1,75 +1,79 @@
 {
 	"position_0": {
-		"label" = "COGround",
-		"pos" = [9164, 155]
+		"label": "COGround",
+		"pos": [9164, 155]
 	},
 	"position_1": {
-		"label" = "COTrans",
-		"pos" = [8830, 5758]
+		"label": "COTrans",
+		"pos": [8830, 5758]
 	},
-	"position_2"
-		"label" = "COB1Fac1Ass",
-		"pos" = [15423, 1988]
+	"position_2": {
+		"label": "COB1Fac1Ass",
+		"pos": [15423, 1988]
 	},
-	"position_3"
-		"label" = "COB1Vtol1Ass",
-		"pos" = [15424, 2240]
+	"position_3": {
+		"label": "COB1Vtol1Ass",
+		"pos": [15424, 2240]
 	},
-	"position_4"
-		"label" = "COB1Fac3Ass",
-		"pos" = [16075, 1996]
+	"position_4": {
+		"label": "COB1Fac3Ass",
+		"pos": [16075, 1996]
 	},
-	"position_5"
-		"label" = "COB1Vtol2Ass",
-		"pos" = [16074, 2262]
+	"position_5": {
+		"label": "COB1Vtol2Ass",
+		"pos": [16074, 2262]
 	},
-	"position_6"
-		"label" = "COB1Fac2Ass",
-		"pos" = [15742, 1995]
+	"position_6": {
+		"label": "COB1Fac2Ass",
+		"pos": [15742, 1995]
 	},
-	"position_7"
-		"label" = "COO1Fac1Ass",
-		"pos" = [838, 3536]
+	"position_7": {
+		"label": "COO1Fac1Ass",
+		"pos": [838, 3536]
 	},
-	"position_8"
-		"label" = "COB2Cyb1Ass",
-		"pos" = [15033, 11859]
+	"position_8": {
+		"label": "COB2Cyb1Ass",
+		"pos": [15033, 11859]
 	},
-	"position_9"
-		"label" = "COB2Cyb2Ass",
-		"pos" = [15292, 11854]
+	"position_9": {
+		"label": "COB2Cyb2Ass",
+		"pos": [15292, 11854]
 	},
-	"position_10"
-		"label" = "COB2Cyb3Ass",
-		"pos" = [15040, 11686]
+	"position_10": {
+		"label": "COB2Cyb3Ass",
+		"pos": [15040, 11686]
 	},
-	"position_11"
-		"label" = "COB2Cyb4Ass",
-		"pos" = [15291, 11703]
+	"position_11": {
+		"label": "COB2Cyb4Ass",
+		"pos": [15291, 11703]
 	},
-	"position_12"
-		"label" = "COB2Vtol1Ass",
-		"pos" = [15545, 11050]
+	"position_12": {
+		"label": "COB2Vtol1Ass",
+		"pos": [15545, 11050]
 	},
-	"position_13"
-		"label" = "COB2Vtol2Ass",
-		"pos" = [15678, 11044]
+	"position_13": {
+		"label": "COB2Vtol2Ass",
+		"pos": [15678, 11044]
 	},
-	"position_14"
-		"label" = "COB2Vtol3Ass",
-		"pos" = [15794, 11050]
+	"position_14": {
+		"label": "COB2Vtol3Ass",
+		"pos": [15794, 11050]
 	},
-	"position_15"
-		"label" = "COB2Fac1Ass",
-		"pos" = [16445, 11069]
+	"position_15": {
+		"label": "COB2Fac1Ass",
+		"pos": [16445, 11069]
 	},
-	"position_16"
-		"label" = "COB2Fac2Ass",
-		"pos" = [16290, 11069]
+	"position_16": {
+		"label": "COB2Fac2Ass",
+		"pos": [16290, 11069]
 	},
-	"position_17"
-		"label" = "startingPos",
-		"pos" = [945, 11852]
+	"position_17": {
+		"label": "startPosition",
+		"pos": [945, 11852]
+	},
+	"position_18": {
+		"label": "scavass",
+		"pos": [768, 6656]
 	},
 	"area_0": {
 		"label": "landingZone",
@@ -130,6 +134,11 @@
 		"label": "Power5",
 		"pos1": [8320, 1280],
 		"pos2": [8960, 1920]
+	},
+	"area_12": {
+		"label": "enemyLandingZone",
+		"pos1": [8704, 5632],
+		"pos2": [8960, 5888]
 	},
 	"object_0": {
 		"label": "COout1Factory",
@@ -210,13 +219,13 @@
 		"type": 1
 	},
 	"object_13": {
-		"label": "CObase1Res",
+		"label": "CObase1Res1",
 		"id": 410,
 		"player": 2,
 		"type": 1
 	},
 	"object_14": {
-		"label": "CObase1Res",
+		"label": "CObase1Res2",
 		"id": 411,
 		"player": 2,
 		"type": 1
