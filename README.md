@@ -1,7 +1,8 @@
 # UZone.wz
 A sequel to my first mod...
 
-This Mod is not yet playable.
+This Mod is playable.
+This Mod is NOT complete.
 Just gathering all the pieces together atm.
 
 A mod to replace the fastplay mission, with a stripped down single map version of Beta Campaign. Because just a small map against 3 scav bases is too boring, but playing a full campaign can take too long.
