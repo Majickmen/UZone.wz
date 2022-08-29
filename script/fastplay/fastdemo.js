@@ -3,8 +3,6 @@ include("script/campaign/templates.js");
 include("script/campaign/transitionTechFP.js");
 include("script/campaign/transitionTech.js");
 const SCAVENGER_PLAYER = 7;
-const ScavRes = [
-];
 const CORes0 = [
 		"R-Wpn-MG1Mk1", "R-Sys-Engineering02",
 		"R-Defense-WallUpgrade06", "R-Struc-Materials06",
@@ -28,13 +26,9 @@ camAreaEvent("playerArea", function()
 {
 	camEnableFactory("COout1Factory");
 	camEnableFactory("scavFactory");
-}),
+});
 //-----------------------------------Game Mechanics--------------------------------------
 function camEnemyBaseEliminated_westBase()
-{
-	camCallOnce("scavdeath");
-}
-function scavdeath()
 {
 	camSetFactoryData("COout1Factory", {
 		assembly: "COO1Fac1Ass",
@@ -44,6 +38,24 @@ function scavdeath()
 		templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
 	});
 	camEnableFactory("COout1Factory");
+// MBDEMO1_MSG
+}
+function camEnemyBaseEliminated_COwestBase()
+{
+// turn on vtols from b1
+// activate the transport waves(3-5)
+// MBDEMO3_MSG 5 minute delay
+}
+function camEnemyBaseEliminated_COnorthBase()
+{
+// turn on factories from b1
+// MBDEMO2_MSG
+}
+function camEnemyBaseEliminated_COnorthEastBase()
+{
+// turn on b2
+// activate the ground waves(5-10)
+// MBDEMO5_MSG
 }
 function SetupMission()
 {
@@ -54,6 +66,7 @@ function SetupMission()
 	{
 		enableStructure(STRUCTS_ALPHA[x], CAM_HUMAN_PLAYER);
 	}
+	enableResearch("R-Wpn-AAGun03", CAM_HUMAN_PLAYER);
 }
 function eventStartLevel()
 {
@@ -82,10 +95,7 @@ function eventStartLevel()
 			eliminateSnd: "pcv392.ogg"
 		},
 		"COnorthBase": {
-			cleanup: "COOutpost2",
-			detectMsg: "FAST_BASE3",
-			detectSnd: "pcv374.ogg",
-			eliminateSnd: "pcv392.ogg"
+			cleanup: "COOutpost2"
 		},
 		"COnorthEastBase": {
 			cleanup: "COBase1",
@@ -108,9 +118,29 @@ function eventStartLevel()
 		"COout1Res": { tech: ["R-Wpn-Cannon3Mk1", "R-Struc-Research-Upgrade01"]},
 		"hardSensor": { tech: "R-Sys-Sensor-Upgrade01"},
 		"hardCB": { tech: "R-Sys-CBSensor-Turret01"},
+//		"R-Wpn-MG4"
+//		"R-Vehicle-Prop-VTOL"
+//		"R-Sys-Engineering02"
+//		"R-Wpn-MG-ROF02"
+//		"R-Wpn-Cannon-ROF01"
+//		"R-Wpn-MG-ROF03"
+//		"R-Wpn-HowitzerMk1"
+//		"R-Struc-VTOLFactory"
+//		"R-Struc-VTOLPad"
+//		"R-Wpn-Bomb01"
+//		"R-Wpn-Cannon4AMk1"
+//		"R-Wpn-Mortar3"
+//		"R-Wpn-Rocket06-IDF"
 	});
 //----------------------------------Enemy Factories--------------------------------------
 	camSetFactories({
+		"scavFactory": {
+			assembly: "scavass",
+			order: CAM_ORDER_DEFEND,
+			groupSize: 5,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(10)),
+			templates: [cTempl.bjeepheavy, cTempl.rbuggy, cTempl.firecan]
+		},
 		"COout1Factory": {
 			assembly: "COO1Fac1Ass",
 			order: CAM_ORDER_COMPROMISE,
@@ -121,14 +151,108 @@ function eventStartLevel()
 			},
 			templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
 		},
-		"scavFactory": {
-			assembly: "scavass",
+		"CObase1Factory1": {
+			assembly: "COB1Fac1Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
+		},
+		"CObase1Factory2": {
+			assembly: "COB1Fac2Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
+		},
+		"CObase1Factory3": {
+			assembly: "COB1Fac3Ass",
 			order: CAM_ORDER_DEFEND,
-			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(10)),
-			templates: [cTempl.bjeepheavy, cTempl.rbuggy, cTempl.firecan]
+			maxSize: 12,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
+			templates: [cTempl.cohtca3, cTempl.cohtltt, cTempl.cohtass]
+		},
+		"CObase1Vtol1": {
+			assembly: "COB1Vtol1Ass",
+			order: CAM_ORDER_ATTACK,
+			maxSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			templates: [cTempl.colvrot, cTempl.colvbom]
+		},
+		"CObase1Vtol2": {
+			assembly: "COB1Vtol2Ass",
+			order: CAM_ORDER_ATTACK,
+			maxSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			templates: [cTempl.colvrot, cTempl.colvbom]
+		},
+		"CObase2Factory1": {
+			assembly: "COB2Fac2Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
+			templates: [cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc]
+		},
+		"CObase2Factory2": {
+			assembly: "COB2Fac2Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
+			templates: [cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc]
+		},
+		"CObase2Vtol1": {
+			assembly: "COB2Vtol1Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			maxSize: 6,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			templates: [cTempl.colvbom]
+		},
+		"CObase2Vtol2": {
+			assembly: "COB2Vtol2Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			maxSize: 6,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			templates: [cTempl.colvlan]
+		},
+		"CObase2Vtol3": {
+			assembly: "COB2Vtol3Ass",
+			order: CAM_ORDER_DEFEND,
+			maxSize: 5,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			templates: [cTempl.colvlan]
+		},
+		"CObase2Cyb1": {
+			assembly: "COB2Cyb1Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.cocybag, cTempl.npcybr, cTempl.npcybc]
+		},
+		"CObase2Cyb2": {
+			assembly: "COB2Cyb2Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.cocybag, cTempl.npcybr, cTempl.npcybc]
+		},
+		"CObase2Cyb3": {
+			assembly: "COB2Cyb3Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.cocybag, cTempl.npcybr, cTempl.npcybc]
+		},
+		"CObase2Cyb4": {
+			assembly: "COB2Cyb4Ass",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			templates: [cTempl.cocybag, cTempl.npcybr, cTempl.npcybc]
 		},
 	});
 //----------------------------Start of Mission Event Queue-------------------------------
-
+	camPlayVideos({video: "MBDEMO0_MSG", type: MISS_MSG});
+// MBDEMO4_MSG 30 minute repeat delay
 }

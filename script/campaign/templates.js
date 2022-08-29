@@ -19,14 +19,21 @@ tpvwtru: { body: "Body1REC", prop: "wheeled01", weap: "Spade1Mk1" },
 tpvwrep: { body: "Body1REC", prop: "wheeled01", weap: "LightRepair1" },
 tpvwmg1: { body: "Body1REC", prop: "wheeled01", weap: "MG1Mk1" },
 colvlan: { body: "Body2SUP", prop: "V-Tol", weap: "Rocket-VTOL-LtA-T" },
+colvrot: { body: "Body2SUP", prop: "V-Tol", weap: "MG4ROTARY-VTOL" },
+colvbom: { body: "Body2SUP", prop: "V-Tol", weap: "Bomb1-VTOL-LtHE" },
 comhrbb: { body: "Body6SUPP", prop: "hover01", weap: "Rocket-BB" },
 comhca2: { body: "Body6SUPP", prop: "hover01", weap: "Cannon2A-TMk1" },
 comhhmg: { body: "Body6SUPP", prop: "hover01", weap: "MG3Mk1" },
 comhbom: { body: "Body6SUPP", prop: "hover01", weap: "Mortar2Mk1" },
 cohtrbb: { body: "Body9REC", prop: "tracked01", weap: "Rocket-BB" },
 cohtca3: { body: "Body9REC", prop: "tracked01", weap: "Cannon375mmMk1" },
-cohtrbb: { body: "Body9REC", prop: "tracked01", weap: "Rocket-BB" },
-cohtrbb: { body: "Body9REC", prop: "tracked01", weap: "Rocket-BB" },
+cohtltt: { body: "Body9REC", prop: "tracked01", weap: "Rocket-LtA-T" },
+cohtass: { body: "Body9REC", prop: "tracked01", weap: "MG4ROTARYMk1" },
+cohthvc: { body: "Body9REC", prop: "tracked01", weap: "Cannon4AUTOMk1" },
+
+
+
+
 
 // CAM_1A
 bloke: { body: "B1BaBaPerson01", prop: "BaBaLegs", weap: "BabaMG" },
