@@ -2,13 +2,31 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 include("script/campaign/transitionTechFP.js");
 include("script/campaign/transitionTech.js");
+if (difficulty === INSANE)
+{
+	var lzWave = 6
+	var Wave = 6
+	var difnum = 4
+}
+if (difficulty === HARD)
+{
+	var lzWave = 4
+	var Wave = 4
+	var difnum = 3
+}
+else
+{
+	var lzWave = 3
+	var Wave = 3
+	var difnum = 2
+}
 const SCAVENGER_PLAYER = 7;
 const CORes0 = [
-		"R-Wpn-MG1Mk1", "R-Sys-Engineering02",
-		"R-Defense-WallUpgrade06", "R-Struc-Materials06",
-		"R-Vehicle-Engine03", "R-Vehicle-Metals03", "R-Cyborg-Metals03",
-		"R-Wpn-Cannon-Accuracy02", "R-Wpn-Cannon-Damage04",
-		"R-Wpn-Cannon-ROF01", "R-Wpn-Flamer-Damage03", "R-Wpn-Flamer-ROF01",
+		"R-Wpn-MG1Mk1", "R-Sys-Engineering02", "R-Defense-WallUpgrade06",
+		"R-Struc-Materials06", "R-Vehicle-Engine03", "R-Vehicle-Metals03",
+		"R-Cyborg-Metals03", "R-Wpn-Cannon-Accuracy02",
+		"R-Wpn-Cannon-Damage04", "R-Wpn-Cannon-ROF01",
+		"R-Wpn-Flamer-Damage03", "R-Wpn-Flamer-ROF01",
 		"R-Wpn-MG-Damage05", "R-Wpn-MG-ROF02", "R-Wpn-Mortar-Acc01",
 		"R-Wpn-Mortar-Damage03", "R-Wpn-Mortar-ROF01",
 		"R-Wpn-Rocket-Accuracy02", "R-Wpn-Rocket-Damage04",
@@ -18,8 +36,6 @@ const CORes0 = [
 const CORes1 = [
 ];
 const CORes2 = [
-];
-const CORes3 = [
 ];
 //-----------------------------------Event Triggers--------------------------------------
 camAreaEvent("playerArea", function()
@@ -38,24 +54,96 @@ function camEnemyBaseEliminated_westBase()
 		templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
 	});
 	camEnableFactory("COout1Factory");
-// MBDEMO1_MSG
+	camPlayVideos({video: "MBDEMO1_MSG", type: MISS_MSG});
 }
 function camEnemyBaseEliminated_COwestBase()
 {
-// turn on vtols from b1
-// activate the transport waves(3-5)
-// MBDEMO3_MSG 5 minute delay
+	camCompleteRequiredResearch(CORes0, THE_COLLECTIVE);
+	camEnableFactory("CObase1Vtol1");
+	camEnableFactory("CObase1Vtol2");
+	setTimer("COTransWave", camChangeOnDiff(camSecondsToMilliseconds(120)));
+	queue("COMSG3", camMinutesToMilliseconds(5));
+}
+function COTransWave()
+{
+	if (lzWave !== 0)
+	{
+		lzWave = lzWave - 1;
+		var TankNum = 2 * difnum;
+		var list = [cTempl.commca2, cTempl.commhmg];
+		var tdroids = [];
+		for (var i = 0; i < TankNum; ++i)
+		{
+			tdroids.push(list[camRand(list.length)]);
+		}
+		camSendReinforcement(THE_COLLECTIVE, camMakePos("COTrans"), tdroids, CAM_REINFORCE_TRANSPORT,
+			{
+				entry: { x: 99, y: 42 },
+				exit: { x: 0, y: 0 },
+				order: CAM_ORDER_ATTACK,
+				data: {
+					regroup: false,
+					count: -1,
+					pos: camMakePos("enemyLZ"),
+					repair: 33,
+				},
+			}
+		);
+	}
+	if (lzWave === 0)
+	{
+		removeTimer("COTransWave");
+	}
+}
+function COMSG3()
+{
+	camPlayVideos({video: "MBDEMO3_MSG", type: MISS_MSG});
+}
+function COMSG4()
+{
+	camPlayVideos({video: "MBDEMO4_MSG", type: MISS_MSG});
 }
 function camEnemyBaseEliminated_COnorthBase()
 {
-// turn on factories from b1
-// MBDEMO2_MSG
+	camCompleteRequiredResearch(CORes1, THE_COLLECTIVE);
+	camEnableFactory("CObase1Factory1");
+	camEnableFactory("CObase1Factory2");
+	camEnableFactory("CObase1Factory3");
+	camPlayVideos({video: "MBDEMO2_MSG", type: MISS_MSG});
 }
 function camEnemyBaseEliminated_COnorthEastBase()
 {
-// turn on b2
-// activate the ground waves(5-10)
-// MBDEMO5_MSG
+	camCompleteRequiredResearch(CORes2, THE_COLLECTIVE);
+	camEnableFactory("CObase2Factory1");
+	camEnableFactory("CObase2Factory2");
+	camEnableFactory("CObase2Vtol1");
+	camEnableFactory("CObase2Vtol2");
+	camEnableFactory("CObase2Vtol3");
+	camEnableFactory("CObase2Cyb1");
+	camEnableFactory("CObase2Cyb2");
+	camEnableFactory("CObase2Cyb3");
+	camEnableFactory("CObase2Cyb4");
+	setTimer("COGroundWave", camChangeOnDiff(camSecondsToMilliseconds(180)));
+	camPlayVideos({video: "MBDEMO5_MSG", type: MISS_MSG});
+}
+function COGroundWave()
+{
+	if (Wave !== 0)
+	{
+		Wave = Wave - 1;
+		var TankNum = 3 * difnum;
+		var list = [cTempl.comhbom, cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb, cTempl.comhsen];
+		var droids = [];
+		for (var i = 0; i < TankNum; ++i)
+		{
+			droids.push(list[camRand(list.length)]);
+		}
+		camSendReinforcement(THE_COLLECTIVE, camMakePos("COGround"), droids, CAM_REINFORCE_GROUND);
+	}
+	if (Wave === 0)
+	{
+		removeTimer("COGroundWave");
+	}
 }
 function SetupMission()
 {
@@ -254,5 +342,5 @@ function eventStartLevel()
 	});
 //----------------------------Start of Mission Event Queue-------------------------------
 	camPlayVideos({video: "MBDEMO0_MSG", type: MISS_MSG});
-// MBDEMO4_MSG 30 minute repeat delay
+	setTimer("COMSG4", camMinutesToMilliseconds(30));
 }

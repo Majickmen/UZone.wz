@@ -1,6 +1,6 @@
 MBDEMO0_MSG,0,1,1,cam2/cam2int2.ogg,0,0,0,0000
-MBDEMO1_MSG,0,1,2,cam2/cam2ap.ogg,0,0,0,0000,cam2/cam2zcol.ogg,0,0,0,0000
-MBDEMO2_MSG,0,1,2,cam2/cam2bpl.ogg,0,0,0,0000,cam2/cam2bcol.ogg,0,0,0,0000
+MBDEMO1_MSG,0,1,2,cam2/cam2ap.ogg,0,0,0,cam2/cam2zcol.ogg,0,0,0,0000
+MBDEMO2_MSG,0,1,2,cam2/cam2bpl.ogg,0,0,0,cam2/cam2bcol.ogg,0,0,0,0000
 MBDEMO3_MSG,0,1,1,cam2/cam2ca.ogg,0,0,0,0000
 MBDEMO4_MSG,0,1,1,cam2/cam2capl.ogg,0,0,0,0000
 MBDEMO5_MSG,0,1,1,cam2/cam2dico.ogg,0,0,0,0000
