@@ -2,6 +2,21 @@ var cTempl = {
 ////////////////////////////////////////////////////////////////////////////////
 
 //Fastmod
+//-----------------Player
+tpvwtru: { body: "Body1REC", prop: "wheeled01", weap: "Spade1Mk1" },
+tpvwrep: { body: "Body1REC", prop: "wheeled01", weap: "LightRepair1" },
+tpvwmg1: { body: "Body1REC", prop: "wheeled01", weap: "MG1Mk1" },
+tpvwsen: { body: "Body1REC", prop: "wheeled01", weap: "SensorTurret1Mk1" },
+tpphthg: { body: "Body11ABT", prop: "HalfTrack", weap: "MG3Mk1" },
+tpphtre: { body: "Body11ABT", prop: "HalfTrack", weap: "LightRepair1" },
+tpphtc2: { body: "Body11ABT", prop: "HalfTrack", weap: "Cannon2A-TMk1" },
+tpchthg: { body: "Body5REC", prop: "HalfTrack", weap: "MG3Mk1" },
+tpchtre: { body: "Body5REC", prop: "HalfTrack", weap: "LightRepair1" },
+tpchtc2: { body: "Body5REC", prop: "HalfTrack", weap: "Cannon2A-TMk1" },
+//"Body1REC" viper
+//"Body5REC" cobra
+//"Body11ABT" python
+//-----------------NewParadigm
 nplhtmg: { body: "Body4ABT", prop: "HalfTrack", weap: "MG1Mk1" },
 nplhtc1: { body: "Body4ABT", prop: "HalfTrack", weap: "Cannon1Mk1" },
 nplhtfl: { body: "Body4ABT", prop: "HalfTrack", weap: "Flame1Mk1" },
@@ -15,9 +30,7 @@ nphtsen: { body: "Body12SUP", prop: "tracked01", weap: "SensorTurret1Mk1" },
 nphthmg: { body: "Body12SUP", prop: "tracked01", weap: "MG3Mk1" },
 nphtmrp: { body: "Body12SUP", prop: "tracked01", weap: "Rocket-Pod" },
 nphtca2: { body: "Body12SUP", prop: "tracked01", weap: "Cannon2A-TMk1" },
-tpvwtru: { body: "Body1REC", prop: "wheeled01", weap: "Spade1Mk1" },
-tpvwrep: { body: "Body1REC", prop: "wheeled01", weap: "LightRepair1" },
-tpvwmg1: { body: "Body1REC", prop: "wheeled01", weap: "MG1Mk1" },
+//-----------------TheCollective
 colvlan: { body: "Body2SUP", prop: "V-Tol", weap: "Rocket-VTOL-LtA-T" },
 colvrot: { body: "Body2SUP", prop: "V-Tol", weap: "MG4ROTARY-VTOL" },
 colvbom: { body: "Body2SUP", prop: "V-Tol", weap: "Bomb1-VTOL-LtHE" },

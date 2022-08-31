@@ -284,6 +284,24 @@
 		"player": 2,
 		"type": 1
 	},
+	"object_24": {
+		"label": "COhowitzer",
+		"id": 220,
+		"player": 2,
+		"type": 1
+	},
+	"object_25": {
+		"label": "COripple",
+		"id": 73,
+		"player": 2,
+		"type": 1
+	},
+	"object_26": {
+		"label": "COtruck",
+		"id": 392,
+		"player": 2,
+		"type": 1
+	},
 	"radius_0": {
 		"label": "removeObjectiveBlip0",
 		"subscriber": 0,

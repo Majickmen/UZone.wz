@@ -4,44 +4,67 @@ include("script/campaign/transitionTechFP.js");
 include("script/campaign/transitionTech.js");
 if (difficulty === INSANE)
 {
-	var lzWave = 6
-	var Wave = 6
-	var difnum = 4
+	var lzWave = 6;
+	var Wave = 6;
+	var difnum = 4;
+	var pdroids = [cTempl.tpvwsen];
 }
 if (difficulty === HARD)
 {
-	var lzWave = 4
-	var Wave = 4
-	var difnum = 3
+	var lzWave = 4;
+	var Wave = 4;
+	var difnum = 3;
+	var pdroids = [cTempl.tpphthg, cTempl.tpphthg, cTempl.tpphthg, cTempl.tpphtc2, cTempl.tpphtc2, cTempl.tpphtre];
 }
 else
 {
-	var lzWave = 3
-	var Wave = 3
-	var difnum = 2
+	var lzWave = 3;
+	var Wave = 3;
+	var difnum = 2;
+	var pdroids = [cTempl.tpchthg, cTempl.tpchthg, cTempl.tpchthg, cTempl.tpchthg, cTempl.tpchtc2, cTempl.tpchtc2, cTempl.tpchtc2, cTempl.tpchtc2, cTempl.tpchtre, cTempl.tpchtre];
 }
 const SCAVENGER_PLAYER = 7;
 const CORes0 = [
-		"R-Wpn-MG1Mk1", "R-Sys-Engineering02", "R-Defense-WallUpgrade06",
-		"R-Struc-Materials06", "R-Vehicle-Engine03", "R-Vehicle-Metals03",
-		"R-Cyborg-Metals03", "R-Wpn-Cannon-Accuracy02",
-		"R-Wpn-Cannon-Damage04", "R-Wpn-Cannon-ROF01",
-		"R-Wpn-Flamer-Damage03", "R-Wpn-Flamer-ROF01",
-		"R-Wpn-MG-Damage05", "R-Wpn-MG-ROF02", "R-Wpn-Mortar-Acc01",
-		"R-Wpn-Mortar-Damage03", "R-Wpn-Mortar-ROF01",
-		"R-Wpn-Rocket-Accuracy02", "R-Wpn-Rocket-Damage04",
-		"R-Wpn-Rocket-ROF03", "R-Wpn-RocketSlow-Accuracy03",
-		"R-Wpn-RocketSlow-Damage04", "R-Sys-Sensor-Upgrade01"
+	"R-Wpn-MG1Mk1", "R-Sys-Engineering02", "R-Defense-WallUpgrade06",
+	"R-Struc-Materials06", "R-Vehicle-Engine03", "R-Vehicle-Metals03",
+	"R-Cyborg-Metals03", "R-Wpn-Cannon-Accuracy02", "R-Wpn-Cannon-Damage04",
+	"R-Wpn-Cannon-ROF01", "R-Wpn-Flamer-Damage03", "R-Wpn-Flamer-ROF01",
+	"R-Wpn-MG-Damage05", "R-Wpn-MG-ROF02", "R-Wpn-Mortar-Acc01",
+	"R-Wpn-Mortar-Damage03", "R-Wpn-Mortar-ROF01", "R-Wpn-Rocket-Accuracy02",
+	"R-Wpn-Rocket-Damage04", "R-Wpn-Rocket-ROF03", "R-Wpn-RocketSlow-Accuracy03",
+	"R-Wpn-RocketSlow-Damage04", "R-Sys-Sensor-Upgrade01"
 ];
 const CORes1 = [
+	"R-Vehicle-Engine04", "R-Vehicle-Metals05", "R-Cyborg-Metals05",
+	"R-Wpn-Cannon-Damage05","R-Wpn-Cannon-ROF02", "R-Wpn-Flamer-Damage06",
+	"R-Wpn-Flamer-ROF03", "R-Wpn-MG-Damage07", "R-Wpn-MG-ROF03",
+	"R-Wpn-Mortar-Acc02", "R-Wpn-Mortar-Damage05", "R-Wpn-Mortar-ROF02",
+	"R-Wpn-Rocket-Damage06", "R-Wpn-RocketSlow-Damage05", "R-Wpn-Bomb-Damage01",
+	"R-Wpn-RocketSlow-ROF02", "R-Wpn-Howitzer-ROF01", "R-Wpn-AAGun-ROF03",
+	"R-Wpn-Howitzer-Damage07", "R-Cyborg-Armor-Heat01", "R-Vehicle-Armor-Heat01",
+	"R-Wpn-AAGun-Damage03", "R-Wpn-AAGun-Accuracy01", "R-Struc-VTOLPad-Upgrade02"
 ];
 const CORes2 = [
+	"R-Vehicle-Engine06", "R-Vehicle-Metals06", "R-Cyborg-Metals06",
+	"R-Wpn-Cannon-Damage06","R-Wpn-Cannon-ROF03", "R-Wpn-Mortar-Damage06",
+	"R-Wpn-Mortar-ROF03", "R-Wpn-RocketSlow-Damage06", "R-Wpn-RocketSlow-ROF03",
+	"R-Wpn-Howitzer-ROF03", "R-Wpn-Howitzer-Damage09", "R-Cyborg-Armor-Heat03",
+	"R-Vehicle-Armor-Heat03", "R-Wpn-Bomb-Damage02", "R-Wpn-AAGun-Accuracy02",
+	"R-Wpn-Howitzer-Accuracy02", "R-Struc-VTOLPad-Upgrade03"
 ];
 //-----------------------------------Event Triggers--------------------------------------
 camAreaEvent("playerArea", function()
 {
 	camEnableFactory("COout1Factory");
 	camEnableFactory("scavFactory");
+	hackAddMessage("FAST_BASE0", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_BASE1", PROX_MSG, CAM_HUMAN_PLAYER);
+	camSendReinforcement(CAM_HUMAN_PLAYER, camMakePos("landingZone"), pdroids, CAM_REINFORCE_TRANSPORT,
+		{
+			entry: { x: 0, y: 99 },
+			exit: { x: 6, y: 0 },
+		}
+	);
 });
 //-----------------------------------Game Mechanics--------------------------------------
 function camEnemyBaseEliminated_westBase()
@@ -63,7 +86,58 @@ function camEnemyBaseEliminated_COwestBase()
 	camEnableFactory("CObase1Vtol2");
 	setTimer("COTransWave", camChangeOnDiff(camSecondsToMilliseconds(120)));
 	queue("COMSG3", camMinutesToMilliseconds(5));
+	powerDetect();
 }
+function powerDetect()
+{
+	hackAddMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+//	camPlayVideos(video power surge detected);
+}
+function derrickBlips()
+{
+	hackAddMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ2", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ3", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ4", PROX_MSG, CAM_HUMAN_PLAYER);
+}
+camAreaEvent("removeObjectiveBlip0", function()
+{
+	hackRemoveMessage("FAST_BASE0", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip1", function()
+{
+	hackRemoveMessage("FAST_BASE1", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip2", function()
+{
+//	camPlayVideos([sound power surge detected]);
+	derrickBlips();
+	hackRemoveMessage("FAST_OBJ0", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip3", function()
+{
+	hackRemoveMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip4", function()
+{
+	hackRemoveMessage("FAST_OBJ2", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip5", function()
+{
+	hackRemoveMessage("FAST_OBJ3", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip6", function()
+{
+	hackRemoveMessage("FAST_OBJ4", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip7", function()
+{
+	hackRemoveMessage("FAST_BASE2", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+camAreaEvent("removeObjectiveBlip8", function()
+{
+	hackRemoveMessage("FAST_BASE3", PROX_MSG, CAM_HUMAN_PLAYER);
+});
 function COTransWave()
 {
 	if (lzWave !== 0)
@@ -110,6 +184,7 @@ function camEnemyBaseEliminated_COnorthBase()
 	camEnableFactory("CObase1Factory2");
 	camEnableFactory("CObase1Factory3");
 	camPlayVideos({video: "MBDEMO2_MSG", type: MISS_MSG});
+	hackAddMessage("FAST_BASE2", PROX_MSG, CAM_HUMAN_PLAYER);
 }
 function camEnemyBaseEliminated_COnorthEastBase()
 {
@@ -125,6 +200,7 @@ function camEnemyBaseEliminated_COnorthEastBase()
 	camEnableFactory("CObase2Cyb4");
 	setTimer("COGroundWave", camChangeOnDiff(camSecondsToMilliseconds(180)));
 	camPlayVideos({video: "MBDEMO5_MSG", type: MISS_MSG});
+	hackAddMessage("FAST_BASE3", PROX_MSG, CAM_HUMAN_PLAYER);
 }
 function COGroundWave()
 {
@@ -168,7 +244,7 @@ function eventStartLevel()
 	setReinforcementTime(-1);
 	setMissionTime(-1);
 	SetupMission();
-	setPower(10000, CAM_HUMAN_PLAYER);
+	setPower(5000, CAM_HUMAN_PLAYER);
 	camSetEnemyBases({
 		"westBase": {
 			cleanup: "lastScav",
@@ -200,25 +276,21 @@ function eventStartLevel()
 	});
 //-------------------------------------Artifacts-----------------------------------------
 	camSetArtifacts({
-		"scavFactory": { tech: "R-Vehicle-Prop-Tracks"},
-		"COout1Factory": { tech: ["R-Vehicle-Prop-Hover", "R-Vehicle-Engine03"]},
-		"COout1Pow": { tech: "R-Struc-Power-Upgrade01"},
-		"COout1Res": { tech: ["R-Wpn-Cannon3Mk1", "R-Struc-Research-Upgrade01"]},
-		"hardSensor": { tech: "R-Sys-Sensor-Upgrade01"},
-		"hardCB": { tech: "R-Sys-CBSensor-Turret01"},
-//		"R-Wpn-MG4"
-//		"R-Vehicle-Prop-VTOL"
-//		"R-Sys-Engineering02"
-//		"R-Wpn-MG-ROF02"
-//		"R-Wpn-Cannon-ROF01"
-//		"R-Wpn-MG-ROF03"
-//		"R-Wpn-HowitzerMk1"
-//		"R-Struc-VTOLFactory"
-//		"R-Struc-VTOLPad"
-//		"R-Wpn-Bomb01"
-//		"R-Wpn-Cannon4AMk1"
-//		"R-Wpn-Mortar3"
-//		"R-Wpn-Rocket06-IDF"
+		"scavFactory": { tech: "R-Vehicle-Prop-Tracks" },
+		"COout1Factory": { tech: ["R-Vehicle-Prop-Hover", "R-Vehicle-Engine03"] },
+		"COout1Pow": { tech: "R-Struc-Power-Upgrade01" },
+		"COout1Res": { tech: ["R-Wpn-Cannon3Mk1", "R-Struc-Research-Upgrade01"] },
+		"hardSensor": { tech: "R-Sys-Sensor-Upgrade01" },
+		"hardCB": { tech: "R-Sys-CBSensor-Turret01" },
+		"CObase1Factory1": { tech: "R-Wpn-MG4" },
+		"CObase1Vtol1": { tech: "R-Vehicle-Prop-VTOL" },
+		"CObase1Res1": { tech: "R-Wpn-MG-ROF02" },
+		"CObase1Res2": { tech: ["R-Wpn-Cannon-ROF01", "R-Wpn-MG-ROF03"] },
+		"COhowitzer": { tech: "R-Wpn-HowitzerMk1" },
+		"CObase1Vtol2": { tech: "R-Wpn-Bomb01" },
+		"CObase1Factory2": { tech: "R-Wpn-Cannon4AMk1" },
+		"CObase1Factory3": { tech: "R-Wpn-Mortar3" },
+		"COripple": { tech: "R-Wpn-Rocket06-IDF" },
 	});
 //----------------------------------Enemy Factories--------------------------------------
 	camSetFactories({
@@ -256,6 +328,7 @@ function eventStartLevel()
 		"CObase1Factory3": {
 			assembly: "COB1Fac3Ass",
 			order: CAM_ORDER_DEFEND,
+			groupSize: 12,
 			maxSize: 12,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
 			templates: [cTempl.cohtca3, cTempl.cohtltt, cTempl.cohtass]
@@ -307,6 +380,7 @@ function eventStartLevel()
 		"CObase2Vtol3": {
 			assembly: "COB2Vtol3Ass",
 			order: CAM_ORDER_DEFEND,
+			groupSize: 5,
 			maxSize: 5,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			templates: [cTempl.colvlan]
