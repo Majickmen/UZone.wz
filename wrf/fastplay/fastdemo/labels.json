@@ -202,7 +202,7 @@
 	},
 	"object_10": {
 		"label": "CObase1Vtol2",
-		"id": 108,
+		"id": 107,
 		"player": 2,
 		"type": 1
 	},
@@ -238,7 +238,7 @@
 	},
 	"object_16": {
 		"label": "CObase2Factory2",
-		"id": 571,
+		"id": 570,
 		"player": 2,
 		"type": 1
 	},
@@ -256,7 +256,7 @@
 	},
 	"object_19": {
 		"label": "CObase2Vtol3",
-		"id": 569,
+		"id": 568,
 		"player": 2,
 		"type": 1
 	},

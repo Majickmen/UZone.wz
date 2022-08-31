@@ -90,7 +90,7 @@ function camEnemyBaseEliminated_COwestBase()
 }
 function powerDetect()
 {
-	hackAddMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ0", PROX_MSG, CAM_HUMAN_PLAYER);
 //	camPlayVideos(video power surge detected);
 }
 function derrickBlips()
@@ -248,13 +248,13 @@ function eventStartLevel()
 	camSetEnemyBases({
 		"westBase": {
 			cleanup: "lastScav",
-			detectMsg: "FAST_BASE1",
+			detectMsg: "FAST_BASE0",
 			detectSnd: "pcv374.ogg",
 			eliminateSnd: "pcv392.ogg"
 		},
 		"COwestBase": {
 			cleanup: "COOutpost1",
-			detectMsg: "FAST_BASE2",
+			detectMsg: "FAST_BASE1",
 			detectSnd: "pcv374.ogg",
 			eliminateSnd: "pcv392.ogg"
 		},
@@ -263,13 +263,13 @@ function eventStartLevel()
 		},
 		"COnorthEastBase": {
 			cleanup: "COBase1",
-			detectMsg: "FAST_BASE4",
+			detectMsg: "FAST_BASE2",
 			detectSnd: "pcv374.ogg",
 			eliminateSnd: "pcv392.ogg"
 		},
 		"COsouthEastBase": {
 			cleanup: "COBase2",
-			detectMsg: "FAST_BASE5",
+			detectMsg: "FAST_BASE3",
 			detectSnd: "pcv374.ogg",
 			eliminateSnd: "pcv392.ogg"
 		},
