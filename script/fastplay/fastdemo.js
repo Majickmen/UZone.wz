@@ -1,7 +1,9 @@
+//------------------------------------Static Values--------------------------------------
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 include("script/campaign/transitionTechFP.js");
 include("script/campaign/transitionTech.js");
+var COTruck;
 if (difficulty === INSANE)
 {
 	var lzWave = 6;
@@ -52,7 +54,7 @@ const CORes2 = [
 	"R-Vehicle-Armor-Heat03", "R-Wpn-Bomb-Damage02", "R-Wpn-AAGun-Accuracy02",
 	"R-Wpn-Howitzer-Accuracy02", "R-Struc-VTOLPad-Upgrade03"
 ];
-//-----------------------------------Event Triggers--------------------------------------
+//---------------------------------------Events------------------------------------------
 camAreaEvent("playerArea", function()
 {
 	camEnableFactory("COout1Factory");
@@ -66,40 +68,6 @@ camAreaEvent("playerArea", function()
 		}
 	);
 });
-//-----------------------------------Game Mechanics--------------------------------------
-function camEnemyBaseEliminated_westBase()
-{
-	camSetFactoryData("COout1Factory", {
-		assembly: "COO1Fac1Ass",
-		order: CAM_ORDER_ATTACK,
-		groupSize: 3,
-		throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
-		templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
-	});
-	camEnableFactory("COout1Factory");
-	camPlayVideos({video: "MBDEMO1_MSG", type: MISS_MSG});
-}
-function camEnemyBaseEliminated_COwestBase()
-{
-	camCompleteRequiredResearch(CORes0, THE_COLLECTIVE);
-	camEnableFactory("CObase1Vtol1");
-	camEnableFactory("CObase1Vtol2");
-	setTimer("COTransWave", camChangeOnDiff(camSecondsToMilliseconds(120)));
-	queue("COMSG3", camMinutesToMilliseconds(5));
-	powerDetect();
-}
-function powerDetect()
-{
-	hackAddMessage("FAST_OBJ0", PROX_MSG, CAM_HUMAN_PLAYER);
-//	camPlayVideos(video power surge detected);
-}
-function derrickBlips()
-{
-	hackAddMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
-	hackAddMessage("FAST_OBJ2", PROX_MSG, CAM_HUMAN_PLAYER);
-	hackAddMessage("FAST_OBJ3", PROX_MSG, CAM_HUMAN_PLAYER);
-	hackAddMessage("FAST_OBJ4", PROX_MSG, CAM_HUMAN_PLAYER);
-}
 camAreaEvent("removeObjectiveBlip0", function()
 {
 	hackRemoveMessage("FAST_BASE0", PROX_MSG, CAM_HUMAN_PLAYER);
@@ -138,6 +106,49 @@ camAreaEvent("removeObjectiveBlip8", function()
 {
 	hackRemoveMessage("FAST_BASE3", PROX_MSG, CAM_HUMAN_PLAYER);
 });
+//--------------------------------------Functions----------------------------------------
+function camEnemyBaseEliminated_westBase()
+{
+	camSetFactoryData("COout1Factory", {
+		assembly: "COO1Fac1Ass",
+		order: CAM_ORDER_ATTACK,
+		groupSize: 3,
+		throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+		templates: [cTempl.comhhmg, cTempl.comhca2, cTempl.comhrbb]
+	});
+	camEnableFactory("COout1Factory");
+	camPlayVideos({video: "MBDEMO1_MSG", type: MISS_MSG});
+}
+function camEnemyBaseEliminated_COwestBase()
+{
+	camCompleteRequiredResearch(CORes0, THE_COLLECTIVE);
+	camEnableFactory("CObase1Vtol1");
+	camEnableFactory("CObase1Vtol2");
+	setTimer("COTransWave", camChangeOnDiff(camSecondsToMilliseconds(120)));
+	queue("COMSG3", camMinutesToMilliseconds(5));
+	powerDetect();
+}
+function powerDetect()
+{
+	hackAddMessage("FAST_OBJ0", PROX_MSG, CAM_HUMAN_PLAYER);
+//	camPlayVideos(video power surge detected);
+}
+function eventDestroyed(obj)
+{
+	if (COTruck && (obj.id === COTruck.id))
+	{
+		var acrate = addFeature("Crate", obj.x, obj.y);
+		addLabel(acrate, "newArtiLabel");
+		camSetArtifacts({"newArtiLabel": { tech: "R-Sys-Engineering02" }});
+	}
+}
+function derrickBlips()
+{
+	hackAddMessage("FAST_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ2", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ3", PROX_MSG, CAM_HUMAN_PLAYER);
+	hackAddMessage("FAST_OBJ4", PROX_MSG, CAM_HUMAN_PLAYER);
+}
 function COTransWave()
 {
 	if (lzWave !== 0)
@@ -176,6 +187,10 @@ function COMSG3()
 function COMSG4()
 {
 	camPlayVideos({video: "MBDEMO4_MSG", type: MISS_MSG});
+}
+function camArtifactPickup_CObase1Vtol1()
+{
+	removeTimer("COMSG4");
 }
 function camEnemyBaseEliminated_COnorthBase()
 {
@@ -232,6 +247,7 @@ function SetupMission()
 	}
 	enableResearch("R-Wpn-AAGun03", CAM_HUMAN_PLAYER);
 }
+//------------------------------------------
 function eventStartLevel()
 {
 	var startpos = getObject("startPosition");
@@ -417,4 +433,5 @@ function eventStartLevel()
 //----------------------------Start of Mission Event Queue-------------------------------
 	camPlayVideos({video: "MBDEMO0_MSG", type: MISS_MSG});
 	setTimer("COMSG4", camMinutesToMilliseconds(30));
+	COTruck = getObject("COtruck");
 }
