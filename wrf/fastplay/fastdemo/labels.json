@@ -300,7 +300,7 @@
 		"label": "COtruck",
 		"id": 392,
 		"player": 2,
-		"type": 1
+		"type": 0
 	},
 	"radius_0": {
 		"label": "removeObjectiveBlip0",
