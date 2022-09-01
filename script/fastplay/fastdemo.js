@@ -246,6 +246,7 @@ function SetupMission()
 		enableStructure(STRUCTS_ALPHA[x], CAM_HUMAN_PLAYER);
 	}
 	enableResearch("R-Wpn-AAGun03", CAM_HUMAN_PLAYER);
+	enableResearch("R-Defense-AASite-QuadMg1", CAM_HUMAN_PLAYER);
 }
 //------------------------------------------
 function eventStartLevel()
@@ -352,14 +353,16 @@ function eventStartLevel()
 		"CObase1Vtol1": {
 			assembly: "COB1Vtol1Ass",
 			order: CAM_ORDER_ATTACK,
-			maxSize: 3,
+			maxSize: 4,
+			groupSize: 1,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			templates: [cTempl.colvrot, cTempl.colvbom]
 		},
 		"CObase1Vtol2": {
 			assembly: "COB1Vtol2Ass",
 			order: CAM_ORDER_ATTACK,
-			maxSize: 3,
+			maxSize: 4,
+			groupSize: 1,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			templates: [cTempl.colvrot, cTempl.colvbom]
 		},
@@ -368,14 +371,14 @@ function eventStartLevel()
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
-			templates: [cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc]
+			templates: [cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc, cTempl.cohhltt, cTempl.cohhass, cTempl.cohhhvc]
 		},
 		"CObase2Factory2": {
 			assembly: "COB2Fac2Ass",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
-			templates: [cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc]
+			templates: [cTempl.cohhltt, cTempl.cohhass, cTempl.cohhhvc, cTempl.cohtltt, cTempl.cohtass, cTempl.cohthvc]
 		},
 		"CObase2Vtol1": {
 			assembly: "COB2Vtol1Ass",
@@ -383,15 +386,15 @@ function eventStartLevel()
 			groupSize: 3,
 			maxSize: 6,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
-			templates: [cTempl.colvbom]
+			templates: [cTempl.comvbom]
 		},
 		"CObase2Vtol2": {
 			assembly: "COB2Vtol2Ass",
 			order: CAM_ORDER_ATTACK,
-			groupSize: 3,
+			groupSize: 2,
 			maxSize: 6,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
-			templates: [cTempl.colvlan]
+			templates: [cTempl.comvlan]
 		},
 		"CObase2Vtol3": {
 			assembly: "COB2Vtol3Ass",
